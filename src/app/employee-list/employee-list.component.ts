@@ -1,13 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { EmployeeData } from '../shared/list-generator.service';
-
-const fibonacci = (num: number): number => {
-  if (num === 1 || num === 2) {
-    return 1;
-  }
-  return fibonacci(num - 1) + fibonacci(num - 2);
-};
+import { fibonacci } from '../utils/fibonacci';
 
 @Component({
   selector: 'app-employee-list',
@@ -47,12 +41,10 @@ const fibonacci = (num: number): number => {
               ></bal-icon>
             </bal-list-item-icon>
           </bal-list-item>
-          <!-- <mat-divider *ngIf="data?.length !== 0"></mat-divider> -->
         </bal-list>
       </bal-card-content>
     </bal-card>
   `,
-  // styleUrls: ['employee-list.component.css']
 })
 export class EmployeeListComponent {
   @Input() data: EmployeeData[] | null = null;
