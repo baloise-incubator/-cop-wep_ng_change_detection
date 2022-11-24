@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+// change variable before the import
+$font-path: "~assets/fonts";
+
+@import "node_modules/@baloise/design-system-components/src/styles/global";
+
+// add custom styles below
+.overview #chart {
+  max-width: 600px;
+  height: 500px;
+  margin: auto;
+}
