@@ -12,6 +12,8 @@ import {
   BalInputModule,
   BalListModule,
 } from '@baloise/design-system-components-angular';
+import { EmployeeInputComponent } from './employee-input.component';
+import { CalculatePipe } from './calculate.pipe';
 
 @NgModule({
   imports: [
@@ -25,7 +27,7 @@ import {
     BalListModule,
     BalIconModule,
   ],
-  declarations: [EmployeeListComponent],
+  declarations: [EmployeeListComponent, EmployeeInputComponent, CalculatePipe],
   exports: [EmployeeListComponent],
 })
 export class EmployeeListModule {}

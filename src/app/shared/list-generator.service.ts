@@ -1,7 +1,9 @@
-export interface EmployeeData {
+import { Immutable } from "immer";
+
+export type EmployeeData = Immutable<{
   label: string;
   num: number;
-}
+}>;
 
 export class ListGenerator {
   generate(labels: string[], numRange: [number, number], width: number): EmployeeData[] {

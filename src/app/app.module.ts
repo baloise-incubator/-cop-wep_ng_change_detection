@@ -10,7 +10,6 @@ import {
   BalNavbarModule,
 } from '@baloise/design-system-components-angular';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeeListModule } from './employee-list/employee-list.module';
 import { ListGenerator } from './shared/list-generator.service';
@@ -22,7 +21,6 @@ import { ListGenerator } from './shared/list-generator.service';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule,
     BalCoreModule.forRoot(),
     BalNavbarModule,
     BalCardModule,
