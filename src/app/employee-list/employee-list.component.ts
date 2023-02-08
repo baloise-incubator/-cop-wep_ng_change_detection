@@ -1,4 +1,10 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 
 import { EmployeeData } from '../shared/list-generator.service';
 import { fibonacci } from '../utils/fibonacci';
@@ -21,7 +27,7 @@ import { fibonacci } from '../utils/fibonacci';
             <bal-list-item-content>
               <bal-list-item-title>{{ item.label }}</bal-list-item-title>
               <bal-list-item-subtitle>{{
-                calculate(item.num)
+                item.num | calculate
               }}</bal-list-item-subtitle>
             </bal-list-item-content>
             <bal-list-item-icon right>
