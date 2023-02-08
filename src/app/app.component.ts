@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import * as Plotly from 'plotly.js-dist-min';
 import { Rnd } from './data/rnd-70-27-30';
 import { Sales } from './data/sales-70-27-30';
@@ -52,7 +52,7 @@ export class AppComponent implements OnInit {
   rndList: EmployeeData[] = Rnd;
   label = '';
 
-  constructor(private generator: ListGenerator) {}
+  constructor(private generator: ListGenerator, private zone: NgZone) {}
 
   ngOnInit() {
     const data: [{ x: string[]; y: number[]; type: 'bar' }] = [
@@ -77,7 +77,7 @@ export class AppComponent implements OnInit {
       data[0].y.push(entity[1]);
     }
 
-    Plotly.newPlot('chart', data);
+    this.zone.runOutsideAngular(() => Plotly.newPlot('chart', data));
   }
 
   add(list: EmployeeData[], name: string) {
