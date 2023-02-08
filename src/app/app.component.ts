@@ -1,4 +1,5 @@
 import { Component, NgZone, OnInit } from '@angular/core';
+import produce from 'immer';
 import * as Plotly from 'plotly.js-dist-min';
 import { Rnd } from './data/rnd-70-27-30';
 import { Sales } from './data/sales-70-27-30';
@@ -31,16 +32,16 @@ const NumRange: [number, number] = [23, 28];
             class="column"
             [data]="salesList"
             department="Sales"
-            (add)="add(salesList, $event)"
-            (remove)="remove(salesList, $event)"
+            (add)="salesList = add(salesList, $event)"
+            (remove)="salesList = remove(salesList, $event)"
           ></app-employee-list>
 
           <app-employee-list
             class="column"
             [data]="rndList"
             department="R&D"
-            (add)="add(rndList, $event)"
-            (remove)="remove(rndList, $event)"
+            (add)="rndList = add(rndList, $event)"
+            (remove)="rndList = remove(rndList, $event)"
           ></app-employee-list>
         </section>
       </main>
@@ -81,13 +82,20 @@ export class AppComponent implements OnInit {
   }
 
   add(list: EmployeeData[], name: string) {
-    return list.unshift({
-      label: name,
-      num: this.generator.generateNumber(NumRange),
+    return produce(list, (draft) => {
+      draft.unshift({
+        label: name,
+        num: this.generator.generateNumber(NumRange),
+      });
     });
   }
 
   remove(list: EmployeeData[], node: EmployeeData) {
-    return list.splice(list.indexOf(node), 1);
+    return produce(list, (draft) => {
+      const index = draft.findIndex(
+        (item) => item.label === node.label && item.num === node.num
+      );
+      if (index !== -1) draft.splice(index, 1);
+    });
   }
 }

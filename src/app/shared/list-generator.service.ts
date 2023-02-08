@@ -1,10 +1,16 @@
-export interface EmployeeData {
+import { Immutable } from 'immer';
+
+export type EmployeeData = Immutable<{
   label: string;
   num: number;
-}
+}>;
 
 export class ListGenerator {
-  generate(labels: string[], numRange: [number, number], width: number): EmployeeData[] {
+  generate(
+    labels: string[],
+    numRange: [number, number],
+    width: number
+  ): EmployeeData[] {
     const result: EmployeeData[] = [];
     for (let i = 0; i < width; i += 1) {
       result.push(this.generateNode(labels, numRange));
@@ -21,10 +27,13 @@ export class ListGenerator {
     return labels[Math.floor(Math.random() * labels.length)];
   }
 
-  private generateNode(labels: string[], numRange: [number, number]): EmployeeData {
+  private generateNode(
+    labels: string[],
+    numRange: [number, number]
+  ): EmployeeData {
     return {
       label: this.generateLabel(labels),
-      num: this.generateNumber(numRange)
+      num: this.generateNumber(numRange),
     };
   }
 }
