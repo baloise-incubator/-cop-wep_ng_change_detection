@@ -1,4 +1,7 @@
-export const Sales = [
+import produce from 'immer';
+import { EmployeeData } from '../shared/list-generator.service';
+
+const sales: EmployeeData[] = [
   {
     label: 'Nettle',
     num: 27,
@@ -280,3 +283,5 @@ export const Sales = [
     num: 27,
   },
 ];
+
+export const Sales = produce(sales, (draft) => {});

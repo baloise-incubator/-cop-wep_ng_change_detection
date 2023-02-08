@@ -1,4 +1,7 @@
-export const Rnd = [
+import produce from 'immer';
+import { EmployeeData } from '../shared/list-generator.service';
+
+const rnd: EmployeeData[] = [
   {
     label: 'Sonja',
     num: 28,
@@ -280,3 +283,5 @@ export const Rnd = [
     num: 27,
   },
 ];
+
+export const Rnd = produce(rnd, (draft) => {});
