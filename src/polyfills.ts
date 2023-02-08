@@ -49,6 +49,7 @@
  *
  * https://medium.com/8451/600-faster-stencil-components-in-angular-d442fb87babd
  */
+(window as any).__Zone_disable_requestAnimationFrame = true;
 (window as any).__Zone_disable_customElements = true;
 
 /***************************************************************************************************
