@@ -21,7 +21,7 @@
     "@angular/platform-browser": "^15.0.0",
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
-    "@baloise/design-system-components-angular": "^11.0.14",
+    "@baloise/design-system-components-angular": "^11.0.18",
     "immer": "^9.0.16",
     "memo-decorator": "^2.0.1",
     "plotly.js-dist-min": "^2.6.2",
